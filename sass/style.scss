@@ -1,0 +1,266 @@
+@import "./variables";
+
+// Local variables
+$background: $theme-primary;
+$color-theme-primary: $theme-primary;
+$color-light: white;
+$color-dim: $theme-primary;
+$spacing: 0;
+$radius: 4px;
+$date: 120px;
+$dotborder: 4px;
+$dot: 18px;
+$line: 4px;
+$font-title: "Saira", sans-serif;
+$font-text: "Saira", sans-serif;
+
+// header
+header {
+  z-index: 1;
+  .navbar-brand {
+    img {
+      width: 4rem;
+    }
+  }
+  .nav-item {
+    .active {
+      border-bottom: 2px solid $theme-primary;
+
+      // position: relative;
+      // ::after {
+      //   content: url("/images/dot.svg");
+      //   content: "";
+      //   position: absolute;
+      //   bottom: -4%;
+      //   right: 50%;
+
+      // }
+    }
+  }
+}
+
+// header
+#hero {
+  height: 100vh;
+  max-height: 100vmax;
+  p {
+    font-family: Saira;
+    font-size: 1.35rem;
+    font-weight: normal !important;
+  }
+  .container {
+    height: inherit;
+    max-height: 100vmax;
+
+    .wrapper {
+      height: 80%;
+      // max-height: 50%;
+      display: grid;
+      place-items: center;
+
+      .image_line {
+        width: 18rem;
+        height: 24rem;
+        border: 3px solid $theme-primary;
+        position: relative;
+        .image {
+          width: 100%;
+          img {
+            width: inherit;
+            position: absolute;
+            top: -5%;
+            left: -6%;
+            width: 18rem;
+            height: 24rem;
+          }
+        }
+      }
+      .left_hero {
+        // background-color: red;
+      }
+    }
+    @media only screen and (max-width: 767px) {
+      text-align: center;
+      #right_hero {
+        display: none !important;
+      }
+    }
+  }
+  .about_pointer {
+    text-orientation: sideways;
+    writing-mode: vertical-rl;
+  }
+  .welcome {
+    .text-large {
+      color: rgba(255, 255, 255, 0.02) !important;
+      font-size: 10rem !important;
+      @media screen and (max-width: $sm) {
+        font-size: 5em !important;
+      }
+    }
+  }
+}
+
+// right hero section
+@media screen and (max-width: $sm) {
+  #right_hero {
+    display: none !important;
+  }
+}
+
+// Story section
+#story {
+  .image {
+    width: 100%;
+    max-width: 85%;
+    margin: 0 auto;
+    img {
+      width: inherit !important;
+    }
+  }
+  /* Timeline */
+  .timeline {
+    border-left: 5px solid $theme-primary;
+    border-bottom-right-radius: $radius;
+    border-top-right-radius: $radius;
+    // background: fade($color-light, 3%);
+    color: fade(white, 80%);
+    font-family: $font-text;
+    margin: $spacing auto;
+    letter-spacing: 0.5px;
+    position: relative;
+    line-height: 1.4em;
+    font-size: 1.03em;
+    padding: $spacing;
+    list-style: none;
+    text-align: left;
+    font-weight: 100;
+    max-width: 50%;
+
+    .event {
+      border-bottom: 1px dashed fade($color-light, 10%);
+      padding-bottom: ($spacing * 0.5);
+      margin-bottom: $spacing;
+      padding-left: 1rem;
+      position: relative;
+
+      &:last-of-type {
+        padding-bottom: 0;
+        margin-bottom: 0;
+        border: none;
+      }
+
+      &:before,
+      &:after {
+        position: absolute;
+        display: block;
+        top: 0;
+      }
+
+      &:before {
+        left: (
+            (($date * 0.6) + $spacing + $line + $dot + ($dotborder * 2)) * 1.5
+          ) * -1;
+        color: fade($color-light, 40%);
+        content: attr(data-date);
+        text-align: right;
+        font-weight: 100;
+        font-size: 0.9em;
+        min-width: $date;
+        font-family: $font-title;
+      }
+
+      &:after {
+        box-shadow: 0 0 0 $dotborder fade($color-theme-primary, 100%);
+        left: ($spacing + $line + ($dot * 0.35)) * -1;
+        background: lighten($background, 5%);
+        border-radius: 50%;
+        height: $dot;
+        width: $dot;
+        content: "";
+        top: 5px;
+      }
+    }
+  }
+  .right_story {
+    display: grid;
+    place-items: center;
+    border-radius: 3%;
+  }
+}
+
+// Works section
+#works {
+  img {
+    width: 100%;
+    height: 360px;
+    max-width: 20em;
+    max-height: 20em;
+    margin: auto;
+  }
+  h3 {
+    margin-top: 1rem;
+  }
+  .fa-arrow-right {
+    transform: rotate(-45deg);
+  }
+  a {
+    color: inherit;
+  }
+}
+
+// Hire sectiom
+#hire {
+  form {
+    .form-control {
+      background: $theme-dark;
+      padding: 1.5em;
+      border: 2px solid $theme-primary;
+      &::placeholder {
+        color: $theme-primary;
+      }
+    }
+  }
+}
+
+// Button pointer
+@keyframes bounce {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-30px);
+  }
+}
+.about_pointer {
+  animation: bounce 1s infinite alternate;
+  text-orientation: sideways;
+  writing-mode: vertical-rl;
+  &:hover {
+    text-decoration: none;
+    i,
+    small {
+      color: white !important;
+    }
+  }
+}
+
+// footer
+
+#footer {
+  .about_me {
+    position: absolute;
+    // bottom: 10%;
+    right: 20%;
+  }
+  .thank_you {
+    font-weight: 700;
+    // .text-large {
+    //   color: blue !important;
+    //   font-size: 7rem;
+    // }
+    @media screen and (max-width: $md) {
+      flex-direction: column-reverse;
+    }
+  }
+}
